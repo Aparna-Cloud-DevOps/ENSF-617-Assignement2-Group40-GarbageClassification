@@ -1,7 +1,4 @@
-# **README.txt**
-
 ## **Garbage Classification Using Image, Text, and Multimodal Deep Learning Models**
-
 This repository contains a complete experimental pipeline for garbage classification using **images**, **text descriptions**, and **multimodal fusion architectures**. The goal is to classify each sample into one of four categories:
 
 - **Green**
@@ -10,8 +7,6 @@ This repository contains a complete experimental pipeline for garbage classifica
 - **TTR**
 
 The project evaluates multiple model families—image‑only CNNs, pretrained ResNet and EfficientNet backbones, and multimodal architectures combining image and text—to understand how different modalities contribute to classification accuracy.
-
----
 
 ## **1. Dataset**
 
@@ -35,8 +30,6 @@ Three dataset variants are used in the code:
 - **Image‑only dataset** (for MobileNet/EfficientNet/ResNet image models)
 - **ResNet multimodal dataset** (image + tokenized text)
 - **EfficientNet multimodal dataset** (image + tokenized text)
-
----
 
 ## **2. Experiment Setup**
 
@@ -65,8 +58,6 @@ The experiments are designed to answer:
 3. What types of errors do different models make, and are they systematic?  
 4. How do pretrained backbones (ResNet, EfficientNet) compare to simpler CNNs?
 
----
-
 ## **3. Models Included**
 
 ### **1️⃣ Image‑Only Model**
@@ -91,8 +82,6 @@ The experiments are designed to answer:
 - Text embedding + fusion  
 - Purpose: Efficient multimodal architecture  
 
----
-
 ## **4. Setup Instructions**
 
 ### **Clone the repository**
@@ -115,8 +104,6 @@ pip install -r requirements.txt
 - Pillow  
 - matplotlib  
 
----
-
 ## **5. Training**
 
 Each model has its own training script:
@@ -135,8 +122,6 @@ python train_resnet_text.py
 
 Checkpoints are saved automatically.
 
----
-
 ## **6. Testing and Evaluation**
 
 All models are evaluated using:
@@ -153,8 +138,6 @@ This function:
 - Prints a classification report  
 - Displays a confusion matrix  
 - Returns predictions + labels  
-
----
 
 ## **7. Visualization of Predictions**
 
@@ -178,8 +161,6 @@ These visualizations help identify:
 - Which classes benefit most from multimodal fusion  
 - Whether errors arise from image ambiguity or text ambiguity  
 
----
-
 ## **8. Results**
 
 All results appear **directly in the notebook**, including:
@@ -198,8 +179,6 @@ Results are grouped by model:
 
 Each section includes both quantitative and qualitative outputs.
 
----
-
 ## **9. Observations**
 
 - Image‑only models struggle with ambiguous or visually similar items.  
@@ -217,4 +196,3 @@ Each section includes both quantitative and qualitative outputs.
 - Perform hyperparameter tuning for fusion layers.  
 - Add data augmentation and contrastive learning.  
 
-If you'd like, I can also generate a **final comparison table** summarizing all model metrics for your report.
