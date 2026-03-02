@@ -1,4 +1,5 @@
-## **Garbage Classification Using Image, Text, and Multimodal Deep Learning Models**
+# **Garbage Classification Using Image, Text, and Multimodal Deep Learning Models**
+
 This repository contains a complete experimental pipeline for garbage classification using **images**, **text descriptions**, and **multimodal fusion architectures**. The goal is to classify each sample into one of four categories:
 
 - **Green**
@@ -10,32 +11,29 @@ The project evaluates multiple model families—image‑only CNNs, pretrained Re
 
 ## **1. Dataset**
 
-The dataset consists of images paired with short text descriptions. Each sample includes:
+Each sample in the dataset contains:
 
 - An **image** of a garbage item  
 - A **text description** (used in multimodal models)  
 - A **label**: Green, Blue, Black, or TTR  
 
-Dataset structure:
+Directory structure:
 
 ```
 garbage_data/
  ├── CVPR_2024_dataset_Train/
  ├── CVPR_2024_dataset_Val/
  └── CVPR_2024_dataset_Test/
-```
 
-Three dataset variants are used in the code:
+Dataset variants used:
 
-- **Image‑only dataset** (for MobileNet/EfficientNet/ResNet image models)
+- **Image‑only dataset** (for CNN, ResNet, EfficientNet image models)
 - **ResNet multimodal dataset** (image + tokenized text)
 - **EfficientNet multimodal dataset** (image + tokenized text)
 
 ## **2. Experiment Setup**
 
 ### **Why These Models Were Chosen**
-
-The models were selected to explore how different modalities and architectures affect classification performance:
 
 - **Image‑Only CNN (baseline)**  
   Establishes how well the task can be solved using visual information alone.
@@ -44,19 +42,17 @@ The models were selected to explore how different modalities and architectures a
   Combines ResNet image embeddings with text embeddings to test whether textual descriptions improve classification.
 
 - **Multimodal LSTM Model**  
-  Uses ResNet image features + an LSTM encoder for text to evaluate whether sequential modeling of text improves multimodal fusion.
+  Uses ResNet image features + an LSTM encoder for text to evaluate whether sequential modeling improves multimodal fusion.
 
 - **EfficientNet‑Text Multimodal Model**  
   Tests whether a more efficient image backbone paired with text improves performance compared to ResNet‑based multimodal models.
 
 ### **What the Experiments Aim to Achieve**
 
-The experiments are designed to answer:
-
-1. How much does **text** improve classification compared to image‑only models?  
-2. Which multimodal fusion strategy performs best?  
-3. What types of errors do different models make, and are they systematic?  
-4. How do pretrained backbones (ResNet, EfficientNet) compare to simpler CNNs?
+- How much does **text** improve classification compared to image‑only models?  
+- Which **multimodal fusion strategy** performs best?  
+- What types of **errors** do different models make?  
+- How do **pretrained backbones** compare to simpler CNNs?
 
 ## **3. Models Included**
 
@@ -67,18 +63,18 @@ The experiments are designed to answer:
 - Purpose: Baseline performance  
 
 ### **2️⃣ ResNet‑Text Multimodal Model**
-- Pretrained ResNet18 for image features  
-- Text embedded + fused with image features  
-- Purpose: Evaluate multimodal fusion with a strong image backbone  
+- Pretrained ResNet18  
+- Text embeddings averaged and fused with image features  
+- Purpose: Strong multimodal baseline  
 
 ### **3️⃣ Multimodal LSTM Model**
 - ResNet image encoder  
 - LSTM text encoder  
-- Fusion: concatenation → classifier  
-- Purpose: Test sequential text modeling  
+- Fusion → classifier  
+- Purpose: Sequential text modeling  
 
 ### **4️⃣ EfficientNet‑Text Multimodal Model**
-- EfficientNet image encoder  
+- EfficientNet‑B0 image encoder  
 - Text embedding + fusion  
 - Purpose: Efficient multimodal architecture  
 
@@ -98,8 +94,8 @@ pip install -r requirements.txt
 ```
 
 ### **Requirements**
-- torch >= 2.0  
-- torchvision >= 0.17  
+- torch ≥ 2.0  
+- torchvision ≥ 0.17  
 - numpy  
 - Pillow  
 - matplotlib  
@@ -112,7 +108,7 @@ Each model has its own training script:
 |-------|-----------------|
 | Image‑Only | `train_image_only.py` |
 | ResNet‑Text | `train_resnet_text.py` |
-| Multimodal LSTM | `train_multimodal_lstm.py` |
+| Multimodal LSTM | `train_resnet_lstm.py` |
 | EfficientNet‑Text | `train_efficientnet_text.py` |
 
 Example:
@@ -121,6 +117,8 @@ python train_resnet_text.py
 ```
 
 Checkpoints are saved automatically.
+
+---
 
 ## **6. Testing and Evaluation**
 
@@ -139,21 +137,21 @@ This function:
 - Displays a confusion matrix  
 - Returns predictions + labels  
 
+---
+
 ## **7. Visualization of Predictions**
 
 Two helper functions provide qualitative insights:
 
-### **Wrong Predictions Per Class**
-```python
-show_wrong_predictions_per_class(preds, labels, dataset, class_names)
-```
-Displays misclassified images grouped by true class.
+- **Wrong Predictions Per Class**  
+  ```python
+  show_wrong_predictions_per_class(preds, labels, dataset, class_names)
+  ```
 
-### **Correct Predictions Per Class**
-```python
-show_correct_predictions_per_class(preds, labels, dataset, class_names)
-```
-Displays correctly classified images grouped by class.
+- **Correct Predictions Per Class**  
+  ```python
+  show_correct_predictions_per_class(preds, labels, dataset, class_names)
+  ```
 
 These visualizations help identify:
 
@@ -161,38 +159,91 @@ These visualizations help identify:
 - Which classes benefit most from multimodal fusion  
 - Whether errors arise from image ambiguity or text ambiguity  
 
-## **8. Results**
 
-All results appear **directly in the notebook**, including:
+## **8. Running Training and Testing on the GPU Cluster**
 
-- Classification reports  
-- Confusion matrices  
-- Correct prediction visualizations  
-- Wrong prediction visualizations  
+All training and testing was executed on the university GPU cluster using SLURM.
 
-Results are grouped by model:
+### **Submitting a GPU Job**
 
-- **Image‑Only Model Results**  
-- **ResNet‑Text Model Results**  
-- **Multimodal LSTM Results**  
-- **EfficientNet‑Text Results**  
+```
+sbatch gpu_job.slurm
+```
 
-Each section includes both quantitative and qualitative outputs.
+Each model was trained and tested by modifying the Python script name inside the SLURM file.
 
-## **9. Observations**
+### **Scripts Run via SLURM**
 
-- Image‑only models struggle with ambiguous or visually similar items.  
-- Pretrained backbones (ResNet, EfficientNet) significantly improve accuracy.  
-- Multimodal models outperform image‑only models by leveraging text.  
-- LSTM‑based text modeling improves performance for longer or more descriptive text.  
-- EfficientNet‑Text provides strong performance with lower computational cost.  
+| Model | Training | Testing |
+|-------|----------|---------|
+| Image‑Only | `train_image_only.py` | `test_image_only.py` |
+| ResNet‑Text | `train_resnet_text.py` | `test_resnet_text.py` |
+| ResNet‑LSTM | `train_resnet_lstm.py` | `test_resnet_lstm.py` |
+| EfficientNet‑Text | `train_efficientnet_text.py` | `test_efficientnet.py` |
 
 ---
 
-## **10. Future Work**
+## **9. Running Jupyter Notebook on the GPU Cluster**
 
-- Explore transformer‑based multimodal fusion (e.g., ViLT, CLIP‑style models).  
-- Add attention mechanisms for better text‑image alignment.  
-- Perform hyperparameter tuning for fusion layers.  
-- Add data augmentation and contrastive learning.  
+Jupyter Notebook was used for:
 
+- Visualizing predictions  
+- Inspecting confusion matrices  
+- Debugging dataset issues  
+- Running evaluation interactively  
+
+### **Step 1 — Start Jupyter on the cluster**
+
+```
+module load cuda/12.6.2
+source ~/miniconda3/etc/profile.d/conda.sh
+conda activate gpuenv
+
+jupyter notebook --no-browser --port=8888
+```
+
+### **Step 2 — Create SSH tunnel from local machine**
+
+```
+ssh -N -L 8888:localhost:8888 <username>@<cluster-address>
+```
+
+### **Step 3 — Open in browser**
+
+Navigate to:
+
+```
+http://localhost:8888
+```
+
+Paste the token printed in the cluster terminal.
+
+## **10. Results**
+
+All results appear in the notebook:
+
+- Classification reports  
+- Confusion matrices  
+- Correct/incorrect prediction visualizations  
+
+Results are grouped by model:
+
+- Image‑Only  
+- ResNet‑Text  
+- Multimodal LSTM  
+- EfficientNet‑Text  
+
+## **11. Observations**
+
+- Image‑only models struggle with ambiguous or visually similar items.  
+- Pretrained backbones significantly improve accuracy.  
+- Multimodal models outperform image‑only models by leveraging text.  
+- LSTM‑based text modeling helps with longer descriptions.  
+- EfficientNet‑Text provides strong performance with lower computational cost.  
+
+## **12. Future Work**
+
+- Transformer‑based multimodal fusion (ViLT, CLIP‑style)  
+- Attention mechanisms for better text‑image alignment  
+- Hyperparameter tuning for fusion layers  
+- Data augmentation and contrastive learning  
