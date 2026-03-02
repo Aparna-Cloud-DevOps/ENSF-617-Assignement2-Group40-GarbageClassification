@@ -1,5 +1,7 @@
 # **Garbage Classification Using Image, Text, and Multimodal Deep Learning Models**
-
+# **Submitted By :
+Ayyalasomayajula, Aparna - 30303831
+Radadiya, Mansi Mukeshbhai - 30303863
 This repository contains a complete experimental pipeline for garbage classification using **images**, **text descriptions**, and **multimodal fusion architectures**. The goal is to classify each sample into one of four categories:
 
 - **Green**
