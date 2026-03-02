@@ -1,0 +1,27 @@
+Changing directory...
+Starting training job
+Using device: cuda
+Train dataset size: 11629
+Validation dataset size: 1800
+Epoch 1/5, Loss: 0.8197
+Validation Accuracy: 80.11%
+Checkpoint saved: checkpoints/resnet_text_epoch_1.pth
+
+Epoch 2/5, Loss: 0.5117
+Validation Accuracy: 83.44%
+Checkpoint saved: checkpoints/resnet_text_epoch_2.pth
+
+Epoch 3/5, Loss: 0.4030
+Validation Accuracy: 84.11%
+Checkpoint saved: checkpoints/resnet_text_epoch_3.pth
+
+Epoch 4/5, Loss: 0.3268
+Validation Accuracy: 84.89%
+Checkpoint saved: checkpoints/resnet_text_epoch_4.pth
+
+Epoch 5/5, Loss: 0.2687
+Validation Accuracy: 83.83%
+Checkpoint saved: checkpoints/resnet_text_epoch_5.pth
+
+Training completed and model saved as resnet_text_model_final.pth
+Training completed

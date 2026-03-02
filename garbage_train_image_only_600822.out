@@ -1,0 +1,27 @@
+Changing directory...
+Starting training job
+Using device: cuda
+Train dataset size: 11629
+Validation dataset size: 1800
+Epoch 1/5, Loss: 1.2553
+Validation Accuracy: 49.39%
+Checkpoint saved: checkpoints/image_only_epoch_1.pth
+
+Epoch 2/5, Loss: 1.1712
+Validation Accuracy: 51.83%
+Checkpoint saved: checkpoints/image_only_epoch_2.pth
+
+Epoch 3/5, Loss: 1.1293
+Validation Accuracy: 53.83%
+Checkpoint saved: checkpoints/image_only_epoch_3.pth
+
+Epoch 4/5, Loss: 1.0957
+Validation Accuracy: 55.22%
+Checkpoint saved: checkpoints/image_only_epoch_4.pth
+
+Epoch 5/5, Loss: 1.0665
+Validation Accuracy: 56.67%
+Checkpoint saved: checkpoints/image_only_epoch_5.pth
+
+Training completed and model saved as image_only_model_final.pth
+Training completed

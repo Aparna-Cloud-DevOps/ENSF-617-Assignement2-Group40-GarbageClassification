@@ -1,0 +1,11 @@
+Changing directory...
+Starting training job
+Using device: cuda
+Model loaded successfully.
+Image-only Model Accuracy: 54.02%
+Confusion Matrix:
+[[ 79 437  71 108]
+ [ 35 867  81 103]
+ [ 16 192 552  39]
+ [ 39 399  58 356]]
+Testing completed

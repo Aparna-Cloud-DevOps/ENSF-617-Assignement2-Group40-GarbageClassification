@@ -1,0 +1,11 @@
+Changing directory...
+Starting training job
+Using device: cuda
+ResNet+Text Model loaded successfully.
+ResNet+Text Model Accuracy: 78.64%
+Confusion Matrix:
+[[519  90  27  59]
+ [112 897  53  24]
+ [ 66  43 665  25]
+ [130  82  22 618]]
+Testing completed

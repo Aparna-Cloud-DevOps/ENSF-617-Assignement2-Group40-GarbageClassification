@@ -1,0 +1,11 @@
+Changing directory...
+Starting training job
+Using device: cuda
+ResNet+LSTM Model loaded successfully.
+ResNet+LSTM Model Accuracy: 77.77%
+Confusion Matrix:
+[[489 121  22  63]
+ [ 79 948  32  27]
+ [ 72  53 642  32]
+ [109 106  47 590]]
+Testing completed

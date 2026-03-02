@@ -1,0 +1,21 @@
+Changing directory...
+Starting training job
+Using: cuda
+
+Epoch 1/5 | Train Loss: 0.6937
+Validation Accuracy: 80.89%
+
+Epoch 2/5 | Train Loss: 0.4433
+Validation Accuracy: 84.56%
+
+Epoch 3/5 | Train Loss: 0.3431
+Validation Accuracy: 84.83%
+
+Epoch 4/5 | Train Loss: 0.2714
+Validation Accuracy: 85.28%
+
+Epoch 5/5 | Train Loss: 0.2201
+Validation Accuracy: 84.83%
+
+Training complete. Saved as efficientnet_text_model_final.pth
+Training completed
