@@ -92,7 +92,6 @@ conda create -n garbage_env python=3.10
 conda activate garbage_env
 pip install -r requirements.txt
 ```
-
 ### **Requirements**
 - torch ≥ 2.0  
 - torchvision ≥ 0.17  
