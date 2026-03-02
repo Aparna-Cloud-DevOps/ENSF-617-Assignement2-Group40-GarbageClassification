@@ -1,18 +1,3 @@
-Here is a **fully rewritten, modernized, and accurate README.txt** that incorporates:
-
-- Your **latest codebase**
-- All **four models** (Image‑Only, ResNet‑Text, Multimodal LSTM, EfficientNet‑Text)
-- Your **evaluation workflow**
-- Your **visualization functions**
-- A clear explanation of **why you chose these models**
-- What the **experiment aims to achieve**
-- Where the **results can be found in the notebook**
-- A structure that is clean, professional, and submission‑ready
-
-It replaces your older README entirely.
-
----
-
 # **README.txt**
 
 ## **Garbage Classification Using Image, Text, and Multimodal Deep Learning Models**
@@ -231,7 +216,5 @@ Each section includes both quantitative and qualitative outputs.
 - Add attention mechanisms for better text‑image alignment.  
 - Perform hyperparameter tuning for fusion layers.  
 - Add data augmentation and contrastive learning.  
-
----
 
 If you'd like, I can also generate a **final comparison table** summarizing all model metrics for your report.
